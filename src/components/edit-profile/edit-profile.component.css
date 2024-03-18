@@ -1,0 +1,15 @@
+.edit-profile {
+  background-color: white;
+  margin-top: 80px;
+}
+.btn-animate:hover {
+  background-color: rgb(34, 54, 228);
+}
+.fonts{
+  font-size:16px;
+  font-weight: bold;
+}
+.rounded-circle{
+  width: 150px;
+  height: 150px;
+}

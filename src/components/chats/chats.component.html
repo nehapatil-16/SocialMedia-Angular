@@ -1,0 +1,65 @@
+<!-- <div class="chat-container">
+  <div class="chats-wrapper">
+    <div class="chats">
+      <h4><strong>Chats</strong></h4>
+      <div class="chat-messages">
+        <span *ngFor="let chat of chat2" [ngClass]="{
+          'white-background': chat.user === newUserId,
+          'blue-background': chat.user === userId,
+          'align-left': chat.user === newUserId,
+          'align-right': chat.user === userId
+        }" class="chat-message">
+          <b>{{ usernameMap[chat.user] }} :</b> {{ chat.chats }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-input">
+    <div class="mb-2 p-4 border rounded border Suggestion-item align-items-center d-flex">
+      <input [(ngModel)]="message" class="form-control" placeholder="Type a message..." />
+      <div class="input-group-append">
+        <button (click)="sendMessage()" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-lg-6 col-md-6 mt-20 border rounded chats p-3">
+  <div class="p-3 py-4"> 
+    <div class="text-center">
+      <div *ngIf="profile.profilepic">
+        <img [src]="profile.profilepic" alt="" class="rounded-circle" />
+      </div>
+      <div *ngIf="!profile.profilepic">
+        <img src="../../assets/images/user.jfif" alt="" class="rounded-circle" />
+      </div>
+    </div>
+
+    <div class="text-center mt-3 fonts">
+      <div class="mt-2 mb-0">{{ user.username}}</div>
+      <div>{{ user.first_name}} {{ user.last_name}}</div>
+    </div>
+  </div>
+
+  <!-- <h4><strong>Messages</strong></h4> -->
+  <div class="message-container">
+  <span *ngFor="let chat of chat2" [ngClass]="{
+      'white-background': chat.user === newUserId,
+      'blue-background': chat.user === userId,
+      'align-left': chat.user === newUserId,
+      'align-right': chat.user === userId
+    }" class="mb-2 p-4 Suggestion-item rounded align-items-center chat-box">
+    <div class="message-content">
+      <b>{{ usernameMap[chat.user] }} :</b> {{ chat.chats }}
+    </div>
+  </span>
+</div>
+
+  <div class="bottom-div p-4 mb-3 border rounded border Suggestion-item align-items-center d-flex">
+    <input [(ngModel)]="message" class="form-control" placeholder="Type a message..." />
+    <div class="input-group-append">
+      <button (click)="sendMessage()" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+</div>

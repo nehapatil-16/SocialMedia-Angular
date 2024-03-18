@@ -1,0 +1,129 @@
+.comment{
+    margin-top: 80px;
+}
+.post{
+    width:100%;
+    background:#fff;
+    border-radius:10px;
+    padding:10px;
+    margin:10px;
+}
+.btn{
+    align-items: center;
+    /* text-align: center; */
+    justify-content: center;
+    margin: 3px;
+}
+
+.post .post-top{
+    display:flex;
+    align-items: center;
+    padding:10px;
+}
+
+.post .post-top .dp{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    overflow:hidden;
+}
+
+.post .post-top .dp > img{
+    width:100%;
+    cursor:pointer;
+}
+
+.post .post-top .post-info{
+    margin-left:10px;    
+    font-weight: bold;
+}
+
+.post .post-top .post-info .name{
+    cursor:pointer;
+    font-size:16px;
+}
+
+.post .post-top .post-info .time{
+    font-size:12px;
+    cursor:pointer;
+}
+
+.post .post-top i{
+    margin-left:auto;
+    cursor: pointer;
+}
+
+.post .post-top > input{
+    height:40px;
+    padding:5px 10px;
+    border-radius:25px;
+    outline:none;
+    border:none;
+    flex:1;
+    background:#eee;
+    margin-left:10px;
+}
+
+.post .post-content{
+    font-size:16px;
+    font-weight:normal;
+    padding:10px;
+}
+
+.post .post-content > img{
+    width:100%;
+    margin:5px 0px;
+}
+.post .post-content > video{
+    width:100%;
+    margin:5px 0px;
+}
+
+.post .post-bottom{
+    box-shadow: 1px solid #ddd;
+    display:flex;
+    justify-content: space-between;
+    padding:5px 5px 0px 5px;
+}
+
+.post .post-bottom .action{
+    padding:10px;
+    border-radius:10px;
+    transition: .3s ease-in;
+    cursor: pointer;
+}
+
+.post .post-bottom .action:hover{
+    background:#eee;
+}
+
+.post.create .post-bottom > .action{
+    color:#d74;
+} 
+
+@media (max-width: 576px) {
+    .middle-panel .story-section .story {
+        width: 150px; /* Adjust the width for smaller screens */
+        height: 150px; /* Adjust the height for smaller screens */
+    }
+}
+
+
+/* Add media queries for responsive design */
+@media (max-width: 768px) {
+    .post .post-top .post-info .name,
+    .post .post-top .post-info .time {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .post .post-top .post-info .name,
+    .post .post-top .post-info .time {
+        font-size: 12px; /* Adjust font size for even smaller screens */
+    }
+
+    .post .post-content {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}

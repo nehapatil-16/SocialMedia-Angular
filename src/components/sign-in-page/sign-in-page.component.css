@@ -1,0 +1,65 @@
+.container {
+    height: 90vh; /* Make the container full height of the viewport */
+}
+
+.content-div {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.homeImg {
+    border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+    .form-control {
+        width: 50%;
+        margin-left: 60px;
+    }
+}
+
+@media (min-width: 500px) {
+    .form-control {
+        width: 50%;
+        margin-left: 80px;
+    }
+}
+
+@media(min-width: 500px) and (max-width: 768){
+    .form-control{
+        width: 100%;
+        margin-left: 90px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 982){
+    .form-control{
+        margin-left: 80px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 992px) {
+    .container {
+        padding: 0 15px; /* Add padding to container for tablet view */
+    }
+    .form-control {
+        margin-left: 100px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1000px) {
+    .content-div {
+        padding: 20px; /* Adjust padding for small desktop screens */
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+    .content-div {
+        padding: 20px; /* Adjust padding for larger desktop screens */
+    }
+    .form-control {
+        margin-left: 140px;
+    }
+}
+

@@ -1,0 +1,30 @@
+<div class="col-lg-6 col-md-6 mt-3 border rounded friends p-3">
+  <h4><strong>Friends</strong></h4>
+  <div *ngIf="friendList.length == 0">
+    <h5 class="text-center">You have no friends</h5>
+  </div>
+  <div *ngIf="friendList.length != 0">
+    <div
+      class="mb-2 p-4 border rounded border Suggestion-item align-items-center d-flex"
+      *ngFor="let users of friendList; let i = index"
+      
+    >
+      <a class="friend d-flex align-items-center flex-grow-1" href="#">
+        <div class="dp" *ngIf="userProfileMap[users.id]">
+          <img [src]="userProfileMap[users.id]" alt="" />
+        </div>
+        <div class="dp" *ngIf="!userProfileMap[users.id]">
+          <img src="../../assets/images/user.jfif" alt="" />
+        </div>
+        <p class="name">{{ userMap[users.id] || "Loading..." }}</p>
+      </a>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteFriend(users.id)"
+      >
+        remove friend
+      </button>
+    </div>
+  </div>
+</div>

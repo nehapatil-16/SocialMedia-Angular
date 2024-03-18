@@ -1,0 +1,125 @@
+<div class="fs-5 body">
+  <div class="card p-5 w-70">
+    <div class="card-header text-center text-white">
+      <h2>Sign Up</h2>
+    </div>
+    <form [formGroup]="registrationForm" (ngSubmit)="onFormSubmit()">
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Enter your username"
+          formControlName="username"
+        />
+      </div>
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="firstname" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          placeholder="Enter your firstname"
+          formControlName="firstname"
+        />
+        <div
+          class="error fs-6"
+          id="passError"
+          *ngIf="
+            registrationForm.get('firstname')?.hasError('pattern') &&
+            registrationForm.get('firstname')?.touched
+          "
+        >
+          Invalid firstname. Must be characters only.
+        </div>
+      </div>
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          placeholder="Enter your lastname"
+          formControlName="lastname"
+        />
+        <div
+          class="error fs-6"
+          id="passError"
+          *ngIf="
+            registrationForm.get('lastname')?.hasError('pattern') &&
+            registrationForm.get('lastname')?.touched
+          "
+        >
+          Invalid lastname. Must be characters only.
+        </div>
+      </div>
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter your password"
+          formControlName="password"
+        />
+        <div
+          class="error fs-6"
+          id="passError"
+          *ngIf="
+            registrationForm.get('password')?.hasError('pattern') &&
+            registrationForm.get('password')?.touched
+          "
+        >
+          Invalid password. Must be at least 8 characters long and include at
+          least one uppercase letter, one lowercase letter, one number, and one
+          symbol.
+        </div>
+      </div>
+
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="cpassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="cpassword"
+          placeholder="Enter same password"
+          formControlName="cpassword"
+        />
+        <div
+          class="error fs-6"
+          id="notSameError"
+          *ngIf="
+            registrationForm.hasError('mismatch') &&
+            registrationForm.get('cpassword')?.touched
+          "
+        >
+          Please enter the same password.
+        </div>
+      </div>
+
+      <div class="mb-2 fs-5 text-white" [formGroup]="registrationForm">
+        <label for="email" class="form-label">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter your email"
+          formControlName="email"
+        />
+        <div
+          class="error fs-6"
+          *ngIf="
+            registrationForm.get('email')?.invalid &&
+            registrationForm.get('email')?.touched
+          "
+        >
+          Please enter a valid email with .com .
+        </div>
+      </div>
+      <div class="my-3">
+        <button type="submit" class="btn btn-danger w-100">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

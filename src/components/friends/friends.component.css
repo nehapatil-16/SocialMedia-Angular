@@ -1,0 +1,102 @@
+
+.friends {
+    position: sticky;
+    top: 70px;
+    width: 49%;
+    max-width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: white;
+}
+
+.right-panel p {
+    font-weight: bold;
+}
+.right-panel div:hover{
+    background-color: rgb(247, 244, 244);
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+.p-2 {
+    padding: 1rem;
+}
+
+.dp img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.friend .name {
+    margin: 0;
+}
+
+.friend i.bi-send-fill {
+    font-size: 20px;
+    color: rgb(23, 114, 250);
+    margin-left: auto; 
+}
+
+/* animation */
+.suggestion-item {
+    transition: transform 0.3s ease-in-out;
+}
+
+.suggestion-item:hover {
+    transform: scale(1.04);
+}
+
+.animated-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.suggestion-item:hover .animated-icon {
+    transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .right-panel {
+        max-width: none;
+        margin: 0;
+    }
+
+    .dp img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .friend i.bi-send-fill {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .right-panel {
+        padding: 0;
+    }
+
+    .mb-2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .p-2 {
+        padding: 0.5rem;
+    }
+
+    .friend i.bi-send-fill {
+        font-size: 16px;
+    }
+}  

@@ -1,0 +1,44 @@
+<div class="col-lg-6 col-md-6 comment">
+  <div *ngIf="post" class="post border">
+    <div *ngIf="post.text" class="post-content">
+      {{ post.text }}
+    </div>
+    <div *ngIf="post.media" class="post-content">
+      <ng-container [ngSwitch]="getMediaType(post.media)">
+        <img *ngSwitchCase="'image'" [src]="post.media" alt="Image" />
+        <video *ngSwitchCase="'video'" controls>
+          <source [src]="post.media" type="video/mp4" />
+        </video>
+        <audio *ngSwitchCase="'audio'" controls>
+          <source [src]="post.media" type="audio/mp3" />
+        </audio>
+        <div *ngSwitchDefault>Unsupported media type</div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="post border">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="comment">Comments</label>
+        <textarea
+          class="form-control"
+          id="comment"
+          rows="5"
+          placeholder="Enter your comment"
+          [(ngModel)]="ComentText"
+          name="ComentText"
+        ></textarea>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Comment" />
+    </form>
+  </div>
+  <div class="post border">
+    <div *ngFor="let commented of comments">
+      <p class="name">
+        <strong>{{ userMap[commented.id] || "Loading..." }} : </strong
+        ><span>{{ commented.content }}</span>
+        <div (click)="reply(commented.id)"><b> Reply</b></div>
+      
+    </div>
+  </div>
+</div>

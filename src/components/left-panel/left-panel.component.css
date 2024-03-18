@@ -1,0 +1,146 @@
+
+body {
+  background-color: #545454;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.container {
+  height: 100vh;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  padding: 8px;
+  background-color: #fff;
+  position: relative;
+  /* height: 100%; */
+}
+
+.upper {
+  height: 1%;
+}
+
+.upper img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.user {
+  position: relative;
+}
+
+.profile img {
+  height: 80px;
+  width: 80px;
+  margin-top: 2px;
+}
+
+.profile {
+  position: absolute;
+  top: -50px;
+  left: 30%;
+  height: 90px;
+  width: 90px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+.stats span {
+  font-size: 29px;
+}
+
+.left-panel {
+  position: sticky;
+  /* top: 70px; */
+  width: 23%;
+  height: calc(100vh - 70px);
+  font-weight: bold;
+  /* background-color: white; */
+  margin-top: 70px;
+}
+.panel {
+  background-color: white;
+}
+
+.dp img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.friend .name {
+  margin: 0;
+}
+
+.friend i.bi-send-fill {
+  font-size: 20px;
+  color: rgb(23, 114, 250);
+  margin-left: auto;
+}
+.left-panel ul {
+  padding: 10px 0px;
+}
+
+.left-panel ul li {
+  list-style: none;
+  display: flex;
+  padding: 0.7rem 1rem;
+  align-items: center;
+  transition: 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+  /* border: 1px solid rgb(189, 188, 188); */
+  background-color: white;
+  height: 50px;
+}
+
+.left-panel ul li:hover {
+  background: #d8d6d6;
+}
+
+.left-panel ul li > p {
+  margin-left: 5px;
+}
+
+.left-panel ul li > i {
+  font-size: 20px;
+  color: slateblue;
+}
+
+.left-panel ul li i.fa-calendar-week {
+  color: tomato;
+}
+
+.left-panel ul li i.fa-briefcase {
+  /* Add styles for fa-briefcase */
+  color: your-color; /* Choose a color */
+}
+
+.left-panel ul li i.fa-star {
+  color: yellowgreen;
+}
+
+.left-panel ul li i.fa-hands-helping {
+  color: indianred;
+}
+
+.left-panel .footer-links {
+  padding: 5px 1rem;
+}
+
+.left-panel .footer-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+}

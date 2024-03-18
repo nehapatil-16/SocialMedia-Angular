@@ -1,0 +1,12 @@
+<div class="mb-2 p-2" *ngIf="request.is_accepted === 'P'">
+    <a class='friend d-flex align-items-center' href="#">
+        <div class="dp">
+            <img src="/assets/images/dp.jpg" alt="">
+        </div>
+        <p class="name">{{userData}}</p>
+    </a>
+    <div class="d-flex m-2">
+        <button class="btn btn-sm btn-primary m-2" (click)="FriendRequest(request.id,'A')">Accept</button>
+        <button class="btn btn-sm btn-danger m-2" (click)="deleteFriendRequest(request.id)">Reject</button>
+    </div>
+</div>

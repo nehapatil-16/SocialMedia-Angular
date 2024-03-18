@@ -1,0 +1,25 @@
+<form (ngSubmit)="onFormSubmit()">
+  <div class="col-lg-6 col-md-6 mt-20 rounded p-4 add-post">
+    <div class="m-3">
+      <label for="file" class="form-label">Choose your post</label>
+      <input
+        class="form-control"
+        name="file"
+        type="file"
+        (change)="onImageFileChange($event)"
+      />
+    </div>
+    <div class="m-3">
+      <label for="shouts" class="form-label">Add Shouts here...</label>
+      <textarea
+        class="form-control"
+        rows="5"
+        [(ngModel)]="shoutText"
+        name="shouts"
+      ></textarea>
+    </div>
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <input type="submit" class="btn btn-primary" value="Upload Post" />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+<div class="col-lg-2 col-md-2 p-3 col-sm-12 left-panel">
+  <div class="card">
+    <div class="upper">
+      <img src="../../assets/images/herbs.jpg" class="img-fluid" alt="herbs" />
+    </div>
+
+    <div class="user text-center">
+      <div class="profile" *ngIf="profile.profilepic">
+        <img
+          [src]="profile.profilepic"
+          class="rounded-circle"
+          width="80"
+          alt="profile"
+        />
+      </div>
+      <div class="profile" *ngIf="!profile.profilepic">
+        <img
+          src="../../assets/images/user.jfif"
+          class="rounded-circle"
+          width="80"
+          alt="user"
+        />
+      </div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <h4 class="mb-0">{{ username }}</h4>
+      <span class="text-muted d-block mb-2"
+        >{{ firstname }} {{ lastname }}</span
+      >
+      <div>{{ profile.bio }}</div>
+      <a href="/dashboard/user-profile">
+        <button class="btn btn-primary follow m-2">View Profile</button>
+      </a>
+    </div>
+  </div>
+
+  <ul class="list-unstyled">
+    <li class="mb-2 rounded-3 border" (click)="editProfile(profile.id)">
+      <em class="fa fa-user mx-3"></em>
+      <div>Edit Profile</div>
+    </li>
+
+    <li class="mb-2 rounded-3 border" (click)="friends(profile.id)">
+      <em class="fa fa-user-friends mx-3"></em>
+      <div>Friends</div>
+    </li>
+
+    <li class="mb-2 rounded-3 border" (click)="chats(profile.id)">
+      <em class="fa fa-user-friends mx-3"></em>
+      <div>Chats</div>
+    </li>
+  </ul>
+</div>

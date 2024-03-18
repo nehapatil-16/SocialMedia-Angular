@@ -1,0 +1,36 @@
+<div class="col-lg-6 col-md-6 mt-3 edit-profile p-3 friends">
+  <h4><strong>Friend Requests</strong></h4>
+  <ul class="list-group list-group-flush">
+    <div *ngIf="friendReq.length == 0">
+      <h5 class="text-center">no request available</h5>
+    </div>
+  </ul>
+
+  <div *ngIf="friendReq.length > 0">
+    <ul>
+    <li class="list-group-item" *ngFor="let req of friendReq">
+      <div class="friend mb-2 p-2 d-flex">
+        <a class="friend d-flex align-items-center flex-grow-1" href="#">
+          <div class="dp" *ngIf="userProfileMap[req.id]">
+            <img [src]="userProfileMap[req.id]" alt="">
+        </div>
+        <div class="dp" *ngIf="!userProfileMap[req.id]">
+            <img src="../../assets/images/user.jfif" alt="">
+        </div>
+          <p class="m-3">
+            <strong>{{ userMap[req.id] || "Loading..." }}</strong>
+          </p>
+        </a>
+        <div class="d-flex m-2">
+          <button class="btn btn-primary m-2" (click)="FriendRequest(req.id, req.to_user, req.from_user)">
+            Accept
+          </button>
+          <button class="btn btn-danger m-2" (click)="deleteFriendRequest(req.id)">
+            Reject
+          </button>
+        </div>
+      </div>
+    </li>
+    </ul>
+  </div>
+</div>

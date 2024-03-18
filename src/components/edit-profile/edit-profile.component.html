@@ -1,0 +1,39 @@
+<!-- imageupload.component.html -->
+<div class="col-lg-6 col-md-6 mt-20 border rounded edit-profile p-3">
+  <div class="p-3 py-4">
+    <div class="text-center">
+    <div *ngIf="profile.profilepic">
+      <img [src]="profile.profilepic" alt="" class="rounded-circle"/>
+  </div>
+  <div *ngIf="!profile.profilepic">
+      <img src="../../assets/images/user.jfif" alt="" class="rounded-circle"/>
+  </div>
+  </div>
+
+    <div class="text-center mt-3 fonts">
+      <div class="mt-2 mb-0">{{ username}}</div>
+      <span>{{ firstname}} {{ lastname}}</span>
+    </div>
+  </div>
+
+<form (ngSubmit)="onFormSubmit()">
+        <div class="m-3">
+            <label for="file" class="form-label">Profile pic</label>
+            <input class="form-control" name="file" type="file" (change)="onImageFileChange($event)"/>
+        </div>
+        <div class="m-3">
+          <label for="shouts" class="form-label">Username</label>
+          <input class="form-control" rows="5" [(ngModel)]="username" name="username" disabled/>
+      </div>
+      <div class="m-3" *ngIf="profile.bio != ''">
+        <label for="shouts" class="form-label">Bio</label>
+        <input class="form-control" rows="5" [(ngModel)]="bio" name="bio"/>
+    </div>
+    <div class="m-3" *ngIf="profile.bio == ''">
+      <label for="shouts" class="form-label">Bio</label>
+      <input class="form-control" rows="5" [(ngModel)]="bio" name="bio"/>
+  </div>
+        <div class="d-grid gap-2 col-3 mx-auto">
+            <input type="submit" class="btn btn-primary" value="Update Profile"/>
+        </div>
+</form>

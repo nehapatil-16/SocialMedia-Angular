@@ -1,0 +1,75 @@
+<div class="col-lg-6 col-md-6 border rounded mt-20 middle-panel">
+  <div class="p-3 py-4">
+    <div class="text-center">
+      <div *ngIf="profile.profilepic">
+        <img [src]="profile.profilepic" alt="" class="rounded-circle" />
+      </div>
+      <div *ngIf="!profile.profilepic">
+        <img src="../../assets/images/user.jfif" alt="" class="rounded-circle" />
+      </div>
+    </div>
+
+    <div class="text-center mt-3 fonts">
+      <div class="mt-2 mb-0">{{ username}}</div>
+      <p>{{ firstname}} {{ lastname}}</p>
+      <p>{{ profile.bio}}</p>
+      <div class="px-4 mt-1 d-flex">
+        <div class="fonts m-3"> <em class="fas fa-images"></em> {{ post?.length || 0}} Posts</div>
+        <div class="fonts m-3"><em class="fas fa-user-friends"></em> {{ friends?.length || 0}} Friends</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!post || post.length === 0" class="no-post border-top">
+    <em class="fa fa-photo-video" style="font-size: 45px"></em>
+    <h2>No posts available</h2>
+  </div>
+
+  <div *ngIf="post && post.length > 0">
+    <div #content *ngFor="let userpost of post" class="post border mb-3">
+      <div class="post-top">
+        <div class="dp" *ngIf="profile.profilepic">
+          <img [src]="profile.profilepic" alt="" />
+        </div>
+        <div class="dp" *ngIf="!profile.profilepic">
+          <img src="../../assets/images/user.jfif" alt="" />
+        </div>
+        <div class="post-info">
+          <p class="name">{{ username }}</p>
+          <span class="time">{{
+            userpost.date_of_post | date : "dd MMMM"
+            }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="userpost.text" class="post-content">
+        {{ userpost.text }}
+      </div>
+
+      <div *ngIf="userpost.media" class="post-content">
+        <ng-container [ngSwitch]="getMediaType(userpost.media)">
+          <img *ngSwitchCase="'image'" [src]="userpost.media" alt="Image" />
+          <video *ngSwitchCase="'video'" controls>
+            <source [src]="userpost.media" type="video/mp4" />
+          </video>
+          <audio *ngSwitchCase="'audio'" controls>
+            <source [src]="userpost.media" type="audio/mp3" />
+          </audio>
+          <!-- Add more cases for other media types if needed -->
+          <div *ngSwitchDefault>Unsupported media type</div>
+        </ng-container>
+      </div>
+
+      <div class="post-bottom">
+        <div class="action" (click)="comment(userpost.id)">
+          <em class="far fa-comment"></em>
+          <span> Comment</span>
+        </div>
+        <div class="action" (click)="deletepost(userpost.id)">
+          <em class="fa fa-ban"></em>
+          <span> Delete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

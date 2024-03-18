@@ -1,0 +1,30 @@
+<div class="col-md-2 col-lg-2 col-sm-12 m-3 mt-3 p-3 rounded border right-panel">
+  <p>Suggestions</p>
+
+  <div
+    class="mb-2 p-3 Suggestion-item align-items-center"
+    *ngFor="let user of nonFriendUsers"
+  >
+    <div
+      *ngIf="user.id != currentLoginId && user.id != 1"
+      class="d-flex rounded border p-3"
+    >
+      <a class="friend d-flex align-items-center flex-grow-1" href="#">
+        <div class="dp" *ngIf="userProfileMap[user.id]">
+          <img [src]="userProfileMap[user.id]" alt="" />
+        </div>
+        <div class="dp" *ngIf="!userProfileMap[user.id]">
+          <img src="../../assets/images/user.jfif" alt="" />
+        </div>
+        <p class="name">{{ user.username }}</p>
+      </a>
+      <a
+        (click)="onClickSendFriendRequest(this.storedUserData.userid, user.id)"
+      >
+        <button class="btn btn-primary">
+          Request <em class="bi bi-send-fill animated-icon text-white"> </em>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
