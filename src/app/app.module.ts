@@ -23,8 +23,8 @@ import { FriendsComponent } from '../components/friends/friends.component';
 import { EditProfileComponent } from '../components/edit-profile/edit-profile.component';
 import { FriendRequestComponent } from '../components/friend-request/friend-request.component';
 import { CommentComponent } from '../components/comment/comment.component';
-import { ChatsComponent } from '../components/chats/chats.component';
-import { UserschatComponent } from '../components/userschat/userschat.component';
+import { CommonModule } from '@angular/common';
+import { ForgetpasswordComponent } from '../components/forgetpassword/forgetpassword.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +43,7 @@ import { UserschatComponent } from '../components/userschat/userschat.component'
     EditProfileComponent,
     FriendRequestComponent,
     CommentComponent,
-    ChatsComponent,
-    UserschatComponent,
+    ForgetpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +51,8 @@ import { UserschatComponent } from '../components/userschat/userschat.component'
     HttpClientModule,
     FormsModule ,
     ReactiveFormsModule ,
-    loginModule
+    loginModule,
+    CommonModule,
   ],
   providers: [HttpErrorHandler,
     MessageService ],
