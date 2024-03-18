@@ -1,21 +1,9 @@
-
-body {
-  background-color: #545454;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-}
-
-.container {
-  height: 100vh;
-}
-
 .card {
   border: none;
   border-radius: 15px;
   padding: 8px;
   background-color: #fff;
   position: relative;
-  /* height: 100%; */
 }
 
 .upper {
@@ -53,14 +41,20 @@ body {
 }
 
 .left-panel {
-  position: sticky;
-  /* top: 70px; */
-  width: 23%;
-  height: calc(100vh - 70px);
+  position: fixed;
+  top: 80px;
+  left: 10px;
+  width: 20%;
+  height: 55vh;
+  overflow-y: auto;
+  background-color: white;
+  padding: 15px;
+  z-index: 100;
+  border-radius: 10px;
   font-weight: bold;
-  /* background-color: white; */
-  margin-top: 70px;
+
 }
+
 .panel {
   background-color: white;
 }
@@ -88,6 +82,7 @@ body {
   color: rgb(23, 114, 250);
   margin-left: auto;
 }
+
 .left-panel ul {
   padding: 10px 0px;
 }
@@ -109,30 +104,8 @@ body {
   background: #d8d6d6;
 }
 
-.left-panel ul li > p {
+.left-panel ul li>p {
   margin-left: 5px;
-}
-
-.left-panel ul li > i {
-  font-size: 20px;
-  color: slateblue;
-}
-
-.left-panel ul li i.fa-calendar-week {
-  color: tomato;
-}
-
-.left-panel ul li i.fa-briefcase {
-  /* Add styles for fa-briefcase */
-  color: your-color; /* Choose a color */
-}
-
-.left-panel ul li i.fa-star {
-  color: yellowgreen;
-}
-
-.left-panel ul li i.fa-hands-helping {
-  color: indianred;
 }
 
 .left-panel .footer-links {
