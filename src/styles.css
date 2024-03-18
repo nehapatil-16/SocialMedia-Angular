@@ -1,0 +1,12 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    /* background-color: rgb(228, 225, 225); */
+    /* background-color: rgb(41, 40, 40); */
+    /* background-image: linear-gradient(to right, rgb(114, 224, 243),rgb(165, 234, 243), rgb(118, 156, 165), rgb(213, 245, 241)); */
+    background-image: linear-gradient(to right, rgb(204, 207, 207), rgb(214, 212, 212), rgb(223, 214, 214));
+}
