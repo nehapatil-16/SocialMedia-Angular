@@ -1,13 +1,11 @@
-
 .friends {
     position: sticky;
     top: 70px;
-    width: 49%;
-    max-width: 50%;
+    width: 550px;
     height: 100%;
-    margin: 0 auto;
     padding: 0 20px;
     background-color: white;
+    margin-left: -10%;
 }
 
 .right-panel p {
