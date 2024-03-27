@@ -7,6 +7,7 @@ import { FriendshipService } from '../../services/friendship.service';
 import { Friendship } from '../../models/friendship';
 import { UserProfileService } from '../../services/user-profile.service';
 import { Router } from '@angular/router';
+import { Media } from '../../models/media';
 
 @Component({
   selector: 'user-profile',
@@ -27,6 +28,8 @@ export class UserProfileComponent {
   lastname: string = '';
   friends: Friendship[] | undefined;
   profile: any;
+  MediaOfShouts: {[key: number]: Media[]} = {};
+  
   constructor(
     private imageUploadService: ImageUploadService,
     private userService: UserService,
@@ -49,6 +52,14 @@ export class UserProfileComponent {
       .getPostsById(this.storedUserData.userid, this.token)
       .subscribe((data: UserPost[]) => {
         this.post = data;
+
+        data.forEach((post: UserPost) => {
+
+          this.imageUploadService.getMediaById(post.id, this.token).subscribe((data: Media[]) => {
+            this.MediaOfShouts[post.id] = data
+            console.log(this.MediaOfShouts[post.id].length);
+          });
+        });
       });
     this.userService
       .getUserById(this.storedUserData.userid, this.token)
@@ -97,7 +108,7 @@ export class UserProfileComponent {
   deletepost(id:number) {
     this.imageUploadService.deletePost(id, this.token).subscribe((data:any)=>{
       alert("Post deleted successfully")
-      this.router.navigate(['/dashboard/user-profile']);
+      window.location.reload();
     })
   }
 }

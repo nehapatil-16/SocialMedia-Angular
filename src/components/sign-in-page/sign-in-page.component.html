@@ -1,7 +1,7 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="row">
         <div class="col-lg-6 col-md-12 content-div">
-            <h1 class="display-5 text-center mb-4" style="color: #8f5849;">Welcome to your Media Club</h1>
+            <h1 class="display-5 text-center mb-4 text-primary">Welcome to your Media Club</h1>
             <form (ngSubmit)="onFormSubmit()" class="text-center">
                 <div class="form-group">
                     <input class="form-control mb-3" id="username" style="width: 70%;" type="text" autocomplete="off"
@@ -12,8 +12,7 @@
                         placeholder="Password" [(ngModel)]="password" name="password">
                 </div>
                 
-                <button type="submit" style="width: 70%;" class="btn btn-primary rounded-pill mb-3">Sign in</button>
-                <!-- Add Forgot Password link here-->
+                <button type="submit" style="width: 70%;" class="btn btn-primary rounded-pill mb-3">Sign In</button>
                 <br>
                 <a routerLink="/forgetpassword" class="mb-3">Forgot Password?</a> 
                 <p>Or</p>

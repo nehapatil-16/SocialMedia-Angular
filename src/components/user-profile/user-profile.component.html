@@ -42,11 +42,48 @@
         </div>
       </div>
 
-      <div *ngIf="userpost.text" class="post-content">
-        {{ userpost.text }}
-      </div>
+      <div class="post-content">
+        <ng-container *ngIf="userpost.text">
+            {{userpost.text}}
+        </ng-container>
 
-      <div *ngIf="userpost.media" class="post-content">
+        <div *ngIf="MediaOfShouts[userpost.id].length === 1" class="post-content">
+            <ng-container [ngSwitch]="getMediaType(MediaOfShouts[userpost.id][0].file)">
+                <img *ngSwitchCase="'image'" [src]="MediaOfShouts[userpost.id][0].file" alt="image">
+                <video *ngSwitchCase="'video'" controls>
+                    <source [src]="MediaOfShouts[userpost.id][0].file" type="video/mp4">
+                </video>
+                <audio *ngSwitchCase="'audio'" controls class="audio">
+                    <source [src]="MediaOfShouts[userpost.id][0].file" type="audio/mp3">
+                </audio>
+                <div *ngSwitchDefault>
+                    Unsupported media type
+                </div>
+            </ng-container>
+        </div>
+
+        <carousel *ngIf="MediaOfShouts[userpost.id].length > 1" [noWrap]="true"
+            #carousel class="post-content">
+            <slide *ngFor="let media of MediaOfShouts[userpost.id]">
+                <ng-container [ngSwitch]="getMediaType(media.file)">
+                    <img *ngSwitchCase="'image'" [src]="media.file" alt="image"
+                        style="width: 100%; height: 350px;">
+                    <video *ngSwitchCase="'video'" controls style="width: 100%; height: 350px;">
+                        <source [src]="media.file" type="video/mp4">
+                    </video>
+                    <audio *ngSwitchCase="'audio'" controls class="audio"
+                        style="width: 100%; height: 200px;">
+                        <source [src]="media.file" type="audio/mp3">
+                    </audio>
+                    <div *ngSwitchDefault>
+                        Unsupported media type
+                    </div>
+                </ng-container>
+            </slide>
+        </carousel>
+    </div>
+
+      <!-- <div *ngIf="userpost.media" class="post-content">
         <ng-container [ngSwitch]="getMediaType(userpost.media)">
           <img *ngSwitchCase="'image'" [src]="userpost.media" alt="Image" />
           <video *ngSwitchCase="'video'" controls>
@@ -55,10 +92,9 @@
           <audio *ngSwitchCase="'audio'" controls>
             <source [src]="userpost.media" type="audio/mp3" />
           </audio>
-          <!-- Add more cases for other media types if needed -->
           <div *ngSwitchDefault>Unsupported media type</div>
         </ng-container>
-      </div>
+      </div> -->
 
       <div class="post-bottom">
         <div class="action" (click)="comment(userpost.id)">

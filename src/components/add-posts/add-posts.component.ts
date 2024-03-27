@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImageUploadService } from '../../services/image-upload.service';
 import { Router } from '@angular/router';
 
@@ -9,67 +8,157 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-posts.component.css'],
 })
 export class AddPostsComponent {
-  selectedFile: File | null = null;
-  storedUserData: any;
-  token: string = '';
+  selectedFiles: File[] = [];
+  shoutText: string = '';
   date: Date | undefined;
+  user_id: number = 0;
+  token: string = '';
 
   constructor(
     private imageUploadService: ImageUploadService,
     private router: Router
   ) {}
-  shoutText: string = '';
-  // file: File[] = [];
-  file: File | undefined;
-  ngOnInit() {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      this.storedUserData = JSON.parse(userData);
-    }
-    this.token = 'Token ' + this.storedUserData.token;
-  }
 
   onImageFileChange(event: any) {
-    const selectedFile = event.target.files ? event.target.files[0] : undefined;
-    if (selectedFile !== undefined) {
-      console.log(selectedFile);
-      this.file = selectedFile;
+    const selectedFilesList = event.target.files;
+    if (selectedFilesList) {
+      for (let i = 0; i < selectedFilesList.length; i++) {
+        const selectedFile = selectedFilesList[i];
+        console.log('Selected file name:', selectedFile.name);
+        this.selectedFiles.push(selectedFile);
+      }
     }
   }
 
   onFormSubmit(): void {
+    // if (this.selectedFiles.length > 0 || this.shoutText) {
     this.date = new Date();
-    if (this.file || this.shoutText) {
-      if (this.file) {
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+      this.token = userData.token;
+      this.user_id = userData.userid;
+    }
+    
+    // Posting text
+    if (!this.shoutText && this.selectedFiles.length == 0) {
+      alert('Please enter data to post.');
+    } 
+    else {
+      if (this.selectedFiles.length > 0) {
         this.imageUploadService
-          .uploadImage(this.storedUserData.userid,this.date, this.shoutText, this.file, this.token)
+          .postText(this.user_id, this.date, this.shoutText, this.token)
           .subscribe(
-            (response) => 
-            {
-              alert('Post uploaded successfully:');
-              this.router.navigate(['/dashboard/user-profile']);
+            (response: any) => {
+              console.log('Text uploaded successfully');
+
+              if (this.selectedFiles.length > 0) {
+                this.imageUploadService
+                  .postShout(response.id, this.selectedFiles, this.token)
+                  .subscribe(
+                    (response: any) => {
+                      this.router.navigate(['/dashboard/user-profile']);
+                      alert('Post uploaded successfully');
+                    },
+                    (error: any) => {
+                      console.error('Error uploading post');
+                    }
+                  );
+              } 
+              else {
+                this.router.navigate(['/dashboard/user-profile']);
+              }
             },
-            (error) => 
-            {
-              alert('Error uploading post');
+            (error: any) => {
+              alert('Error uploading text');
             }
           );
-      } else {
+      } 
+      else {
         this.imageUploadService
-          .uploadText(this.storedUserData.userid, this.date, this.shoutText, this.token)
+          .postText(this.user_id, this.date, this.shoutText, this.token)
           .subscribe(
-            (response) => {
+            (response: any) => {
               alert('Post uploaded successfully');
               this.router.navigate(['/dashboard/user-profile']);
             },
-            (error) => {
-              alert('Error uploading post');
+            (error: any) => {
+              alert('Error uploading text');
             }
           );
       }
-    } 
-    else {
-      alert('Please add shouts first');
     }
   }
 }
+
+// import { Component } from '@angular/core';
+// import { ImageUploadService } from '../../services/image-upload.service';
+// import { Router } from '@angular/router';
+
+// @Component({
+//   selector: 'app-add-posts',
+//   templateUrl: './add-posts.component.html',
+//   styleUrls: ['./add-posts.component.css'],
+// })
+// export class AddPostsComponent {
+//   selectedFiles: File[] = [];
+//   shoutText: string = '';
+//   date: Date | undefined;
+
+//   constructor(private imageUploadService: ImageUploadService, private router: Router) {}
+
+//   onImageFileChange(event: any) {
+//     const selectedFilesList = event.target.files;
+//     if (selectedFilesList) {
+//       for (let i = 0; i < selectedFilesList.length; i++) {
+//         const selectedFile = selectedFilesList[i];
+//         console.log('Selected file name:', selectedFile.name);
+//         this.selectedFiles.push(selectedFile);
+//       }
+//     }
+//   }
+
+//   onFormSubmit(): void {
+//     this.date = new Date();
+//     if (this.selectedFiles.length > 0 || this.shoutText) {
+//       const userDataString = localStorage.getItem('userData');
+//       if (userDataString) {
+//         const userData = JSON.parse(userDataString);
+//         const token = userData.token;
+//         const user_id = userData.userid;
+
+//         // Posting text
+//         if (this.shoutText) {
+//           this.imageUploadService.postText(user_id, this.date, this.shoutText, token).subscribe((response:any) => {
+//               alert('Post uploaded successfully')
+
+//               if (this.selectedFiles.length > 0) {
+//                 this.imageUploadService.postShout(response.id, this.selectedFiles, token).subscribe(
+//                   (response:any) => {
+//                     this.router.navigate(['/dashboard/user-profile']);
+//                     // alert('Post uploaded successfully');
+//                   },
+//                   (error:any) => {
+//                     console.error('Error uploading post');
+//                   }
+//                 );
+//               }
+//               else{
+//                 this.router.navigate(['/dashboard/user-profile']);
+//               }
+//               // window.location.reload();
+//             },
+//             (error:any) => {
+//               alert('Error uploading text');
+//             }
+//           );
+//         }
+
+//       } else {
+//         console.error('Please add text');
+//       }
+//     } else {
+//       alert('Please enter data to post.');
+//     }
+//   }
+// }

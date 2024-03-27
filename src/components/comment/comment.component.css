@@ -1,5 +1,12 @@
 .comment{
-    margin-top: 80px;
+    position: sticky;
+    margin-top: 90px;
+    top: 70px;
+    width: 570px;
+    height: 100%;
+    padding: 0 20px;
+    background-color: white;
+    margin-left: -10%;
 }
 .post{
     width:100%;
@@ -96,6 +103,16 @@
 .post .post-bottom .action:hover{
     background:#eee;
 }
+.comment-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    margin-left: auto;
+}
+
 
 .post.create .post-bottom > .action{
     color:#d74;

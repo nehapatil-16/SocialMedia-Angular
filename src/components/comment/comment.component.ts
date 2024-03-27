@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { Component } from '@angular/core';
 import { CommentService } from '../../services/comments.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { ImageUploadService } from '../../services/image-upload.service';
 import { UserService } from '../../services/user.service';
 import { Users } from '../../models/user';
 import { UserProfileService } from '../../services/user-profile.service';
+import { Media } from '../../models/media';
 
 @Component({
   selector: 'app-comment',
@@ -48,9 +50,47 @@ export class CommentComponent {
 
     this.imageUploadService.getSinglePostById( this.postIdUrl,this.token).subscribe((data: UserPost) => {
       this.post = data;
-      console.log(this.post)
+      // this.imageUploadService.getMediaById(this.post.id, this.token).subscribe((data: Media[]) => {
+      //   this.post = data;
+      // });
     });
   }
+
+
+  // deleteComment(commentId: number) {
+  //   if (confirm('Are you sure you want to delete this comment?')) {
+  //     this.commentService.deleteComment(commentId).subscribe(() => {
+  //       this.loadComments();
+  //       alert('Comment deleted successfully');
+  //       window.location.reload();
+  //     });
+  //   }
+  // }
+
+
+
+
+  deleteComment(commentId: number) {
+    Swal.fire({
+      title: 'Delete Comment',
+      text: 'Are you sure you want to delete this comment?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.commentService.deleteComment(commentId).subscribe(() => {
+          this.loadComments();
+          Swal.fire('Deleted!', 'Your comment has been deleted.', 'success');
+        });
+      }
+      window.location.reload();
+    });
+  }
+
+
   
   loadComments() {
     this.commentService.getCommentbyId( this.postIdUrl).subscribe(
@@ -107,6 +147,7 @@ export class CommentComponent {
       (document.getElementById('comment') as HTMLTextAreaElement).value = ''
       this.loadComments()
       alert('comment added successfully')
+     
 
     })   
   }

@@ -7,17 +7,15 @@
     height: 70px;
   }
 .chats {
-    /* position: sticky; */
-    /* top: 70px; */
-    width: 49%;
-    /* max-width: 50%; */
-    /* height: 100%; */
-    /* margin: 0 auto; */
+    position: sticky;
+    margin-top: 90px;
+    top: 70px;
+    width: 570px;
     padding: 0 20px;
     background-color: white;
-    margin-top: 80px;
-    position: relative;
-    height: 90vh;
+    margin-left: -10%;
+    /* position: relative; */
+    height: 85vh;
 }
 
 .chat-box {
@@ -26,7 +24,7 @@
     /* box-sizing: border-box;  */
 }
 .message-container {
-    max-height: calc(100vh - 50vh); /* Adjust 150px according to your layout */
+    max-height: calc(100vh - 55vh); /* Adjust 150px according to your layout */
     overflow-y: auto;
   }
 

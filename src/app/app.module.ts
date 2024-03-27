@@ -23,7 +23,11 @@ import { FriendsComponent } from '../components/friends/friends.component';
 import { EditProfileComponent } from '../components/edit-profile/edit-profile.component';
 import { FriendRequestComponent } from '../components/friend-request/friend-request.component';
 import { CommentComponent } from '../components/comment/comment.component';
-import { CommonModule } from '@angular/common';
+import { ChatsComponent } from '../components/chats/chats.component';
+import { UserschatComponent } from '../components/userschat/userschat.component';
+import { AddStoryComponent } from '../components/add-story/add-story.component';
+import { StoryPanelComponent } from '../components/story-panel/story-panel.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ForgetpasswordComponent } from '../components/forgetpassword/forgetpassword.component';
 
 @NgModule({
@@ -43,6 +47,10 @@ import { ForgetpasswordComponent } from '../components/forgetpassword/forgetpass
     EditProfileComponent,
     FriendRequestComponent,
     CommentComponent,
+    ChatsComponent,
+    UserschatComponent,
+    StoryPanelComponent,
+    AddStoryComponent,
     ForgetpasswordComponent,
   ],
   imports: [
@@ -52,7 +60,7 @@ import { ForgetpasswordComponent } from '../components/forgetpassword/forgetpass
     FormsModule ,
     ReactiveFormsModule ,
     loginModule,
-    CommonModule,
+    CarouselModule.forRoot(),
   ],
   providers: [HttpErrorHandler,
     MessageService ],

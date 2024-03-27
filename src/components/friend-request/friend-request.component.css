@@ -1,20 +1,22 @@
+
 .friends {
-  background-color: white;
-  margin-left: -10%;
-  height: 100%;
-  width: 550px;
-  border-radius: 8px;
+background-color: white;
+margin-left: -10%;
+height: 100%;
+width: 550px;
+border-radius: 8px;
+margin-top: 80px;
 }
 
 .dp img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+width: 40px;
+height: 40px;
+border-radius: 50%;
 }
 
 .friend {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
+display: flex;
+align-items: center;
+text-decoration: none;
+color: #333;
 }

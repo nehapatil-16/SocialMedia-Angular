@@ -1,5 +1,5 @@
 .dashboard-container{
-  display: flex;
-  justify-content: space-between;
-  /* position: relative; */
-}
+    display: flex;
+    justify-content: space-between;
+    /* position: relative; */
+  }

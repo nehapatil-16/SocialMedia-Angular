@@ -1,6 +1,5 @@
 <div class="col-lg-6 col-md-6">
   <div *ngIf="post" class="post border">
-   
     <div *ngIf="post.text" class="post-content">
       {{ post.text }}
     </div>
@@ -18,7 +17,7 @@
     </div>
   </div>
 
-  <div class="card post">
+  <div class="card posts">
     <form (ngSubmit)="onSubmit()">
       <div class="m-3">
         <label for="reportReason">Reason for Report:</label>

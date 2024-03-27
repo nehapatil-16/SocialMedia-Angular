@@ -1,5 +1,6 @@
 .friends {
     position: sticky;
+    margin-top: 90px;
     top: 70px;
     width: 550px;
     height: 100%;

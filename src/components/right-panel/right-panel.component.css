@@ -3,7 +3,7 @@
     top: 70px;
     right: 0;
     width: 27.3%;
-    height: calc(80vh - 50px);
+    /* height: calc(80vh - 50px); */
     overflow-y: auto;
     background-color: white;
     padding: 15px;

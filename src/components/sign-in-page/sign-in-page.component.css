@@ -1,5 +1,5 @@
 .container {
-    height: 90vh;
+    height: 90vh; /* Make the container full height of the viewport */
 }
 
 .content-div {
@@ -41,7 +41,7 @@
 
 @media (min-width: 700px) and (max-width: 992px) {
     .container {
-        padding: 0 15px;
+        padding: 0 15px; /* Add padding to container for tablet view */
     }
     .form-control {
         margin-left: 100px;
@@ -50,58 +50,16 @@
 
 @media (min-width: 800px) and (max-width: 1000px) {
     .content-div {
-        padding: 20px; 
+        padding: 20px; /* Adjust padding for small desktop screens */
     }
 }
 
 @media (min-width: 1000px) and (max-width: 1200px) {
     .content-div {
-        padding: 20px;
+        padding: 20px; /* Adjust padding for larger desktop screens */
     }
     .form-control {
         margin-left: 140px;
     }
 }
 
-
-/* 
-.container {
-    height: 90vh; 
-}
-
-.content-div {
-    background-color: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-}
-
-.homeImg {
-    border-radius: 10px;
-}
-
-.form-control {
-    width: 70%;
-    margin: 0 auto; 
-}
-
-.btn {
-    width: 70%;
-}
-
-@media (max-width: 576px) {
-    .form-control, .btn {
-        width: 90%; 
-    }
-}
-
-@media (min-width: 768px) {
-    .form-control, .btn {
-        width: 50%; 
-    }
-}
-
-@media (min-width: 992px) {
-    .form-control, .btn {
-        width: 40%;
-    }
-} */ 

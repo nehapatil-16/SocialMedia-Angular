@@ -1,11 +1,6 @@
 .add-post {
     background-color: white;
-    margin-top: 80px;
-    margin-left: -10%;
-    height: 100%;
-    width: 550px;
 }
-
 .btn-animate:hover {
     background-color: rgb(34, 54, 228);
 }

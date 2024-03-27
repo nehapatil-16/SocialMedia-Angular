@@ -37,17 +37,18 @@ export class ForgetpasswordComponent {
     if (this.otp === '123456') {
       this.passwordUpdated = true;
     }else {
+      alert('Incorrect OTP');
       console.log('Incorrect OTP');
     }
   }
 
   updatePassword(){
     if (this.newPassword !== this.confirmPassword){
-      console.log('Password and Confirm Password does not match')
+      alert('Password and Confirm Password does not match')
       return;
     }
     this.http.post<any>('http://127.0.0.1:8000/update-password/' , { newPassword: this.newPassword, username: this.username}).subscribe(response => {
-      console.log('Password updated successfully')
+      alert('Password updated successfully')
     }, error => {
       console.log('error');
     });

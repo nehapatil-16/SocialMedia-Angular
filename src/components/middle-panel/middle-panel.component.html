@@ -1,4 +1,6 @@
+
 <div class="col-lg-6 col-md-6 m-20 middle-panel">
+    <!-- <story-panel></story-panel> -->
     <div *ngIf="!post || post.length === 0" class="no-post">
         <em class="fa fa-photo-video" style="font-size: 50px;"></em>
         <h2>No posts available</h2>
@@ -7,59 +9,80 @@
     <div *ngIf="post && post.length > 0">
         <div #content *ngFor="let userpost of post">
             <div *ngIf="reportMap[userpost.id] == 0">
-            <div class="post border m-2">
-            <div class="post-top">
-                <div class="dp" *ngIf="userProfileMap[userpost.id]">
-                    <img [src]="userProfileMap[userpost.id]" alt="">
-                </div>
-                <div class="dp" *ngIf="!userProfileMap[userpost.id]">
-                    <img src="../../assets/images/user.jfif" alt="">
-                </div>
-                <div class="post-info">
-                    <p class="name">{{ userMap[userpost.id] || 'Loading...' }}</p>
-                    <span class="time">{{userpost.date_of_post | date: 'dd MMMM'}}</span>
-                </div>
-            </div>
-
-            <div *ngIf="userpost.text" class="post-content">
-                {{userpost.text}}
-            </div>
-
-            <div *ngIf="userpost.media" class="post-content">
-                <ng-container [ngSwitch]="getMediaType(userpost.media)">
-                    <img *ngSwitchCase="'image'" [src]="userpost.media" alt="Image">
-                    <video *ngSwitchCase="'video'" controls>
-                        <source [src]="userpost.media" type="video/mp4">
-                    </video>
-                    <audio *ngSwitchCase="'audio'" controls class="audio">
-                        <source [src]="userpost.media" type="audio/mp3">
-                    </audio>
-                    <!-- Add more cases for other media types if needed -->
-                    <div *ngSwitchDefault>
-                        Unsupported media type
+                <div class="post border m-2">
+                    <div class="post-top">
+                        <div class="dp" *ngIf="userProfileMap[userpost.id]">
+                            <img [src]="userProfileMap[userpost.id]" alt="">
+                        </div>
+                        <div class="dp" *ngIf="!userProfileMap[userpost.id]">
+                            <img src="../../assets/images/user.jfif" alt="">
+                        </div>
+                        <div class="post-info">
+                            <p class="name">{{ userMap[userpost.id] || 'Loading...' }}</p>
+                            <span class="time">{{userpost.date_of_post | date: 'dd MMMM'}}</span>
+                        </div>
                     </div>
-                </ng-container>
-            </div>
 
-            <div class="post-bottom">
-                <div *ngIf="userLikedPost(userpost.id)" (click)="unlike(userpost.id)" class="action">
-                    <em class="fa fa-solid fa-heart" style="color: red;"></em>
-                    <span> Like</span>
+                    <div class="post-content">
+                        <ng-container *ngIf="userpost.text">
+                            {{userpost.text}}
+                        </ng-container>
+
+                        <div *ngIf="MediaOfShouts[userpost.id].length === 1" class="post-content">
+                            <ng-container [ngSwitch]="getMediaType(MediaOfShouts[userpost.id][0].file)">
+                                <img *ngSwitchCase="'image'" [src]="MediaOfShouts[userpost.id][0].file" alt="image">
+                                <video *ngSwitchCase="'video'" controls>
+                                    <source [src]="MediaOfShouts[userpost.id][0].file" type="video/mp4">
+                                </video>
+                                <audio *ngSwitchCase="'audio'" controls class="audio">
+                                    <source [src]="MediaOfShouts[userpost.id][0].file" type="audio/mp3">
+                                </audio>
+                                <div *ngSwitchDefault>
+                                    Unsupported media type
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <carousel *ngIf="MediaOfShouts[userpost.id].length > 1" [noWrap]="true"
+                            style="width: 100%; height: 300px;" #carousel class="post-content">
+                            <slide *ngFor="let media of MediaOfShouts[userpost.id]">
+                                <ng-container [ngSwitch]="getMediaType(media.file)">
+                                    <img *ngSwitchCase="'image'" [src]="media.file" alt="image"
+                                        style="width: 100%; height: 350px;">
+                                    <video *ngSwitchCase="'video'" controls style="width: 100%; height: 350px;">
+                                        <source [src]="media.file" type="video/mp4">
+                                    </video>
+                                    <audio *ngSwitchCase="'audio'" controls class="audio"
+                                        style="width: 100%; height: 350px;">
+                                        <source [src]="media.file" type="audio/mp3">
+                                    </audio>
+                                    <div *ngSwitchDefault>
+                                        Unsupported media type
+                                    </div>
+                                </ng-container>
+                            </slide>
+                        </carousel>
+                    </div>
+
+                    <div class="post-bottom">
+                        <div *ngIf="userLikedPost(userpost.id)" (click)="unlike(userpost.id)" class="action">
+                            <em class="fa fa-solid fa-heart" style="color: red;"></em>
+                            <span> Like</span>
+                        </div>
+                        <div *ngIf="!userLikedPost(userpost.id)" (click)="like(userpost.id)" class="action">
+                            <em class="far fa-heart"></em>
+                            <span> Like</span>
+                        </div>
+                        <div (click)="comment(userpost.id)" class="action">
+                            <em class="far fa-comment"></em>
+                            <span> Comment</span>
+                        </div>
+                        <div (click)="Report(userpost.id)" class="action">
+                            <em class="fa fa-ban"></em>
+                            <span> Report</span>
+                        </div>
+                    </div>
                 </div>
-                <div *ngIf="!userLikedPost(userpost.id)" (click)="like(userpost.id)" class="action">
-                    <em class="far fa-heart"></em>
-                    <span> Like</span>
-                </div>
-                <div (click)="comment(userpost.id)" class="action">
-                    <em class="far fa-comment"></em>
-                    <span> Comment</span>
-                </div>
-                <div (click)="Report(userpost.id)" class="action">
-                    <em class="fa fa-ban"></em>
-                    <span> Report</span>
-                </div>
-            </div>
-            </div>
             </div>
         </div>
     </div>

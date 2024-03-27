@@ -1,0 +1,20 @@
+<div class="story-panel">
+    <div class="story" *ngFor="let story of stories" (click)="showStory(story)">
+      <img [src]="story.media" alt="Story Image">
+      <div class="story-overlay">
+        <span class="story-owner">{{ userMap[story.id] || "Loading..." }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for displaying story -->
+  <div class="modal" [ngClass]="{ 'show': selectedStory }">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <img *ngIf="selectedStory" [src]="selectedStory.media" alt="Selected Story Image">
+      <div class="story-overlay">
+        <span class="story-owner">{{ userMap[selectedStory?.id] || "Loading..."}}</span>
+      </div>
+    </div>
+  </div>
+  

@@ -4,18 +4,18 @@
     <h5 *ngIf="users.length == 0" class="text-center">You have no friends</h5>
   </div>
   <span *ngFor="let user of users" class="mb-2 p-4 Suggestion-item rounded align-items-center"
-    (click)="handleClick(user.id, userProfileMap[user.id])">
-    <div *ngIf="user.id!=1 && user.id!=userid" class="chat-box">
-      <!-- <div class="chat-box"> -->
+    (click)="handleClick(user.follower, userProfileMap[user.follower])">
+    <!-- <div *ngIf="user.id!=1 && user.id!=userid" class="chat-box"> -->
+      <div class="chat-box">
     <div class="user-info">
-      <div class="dp" *ngIf="userProfileMap[user.id]">
-        <img [src]="userProfileMap[user.id]" alt="">
+      <div class="dp" *ngIf="userProfileMap[user.follower]">
+        <img [src]="userProfileMap[user.follower]" alt="">
       </div>
-      <div class="dp" *ngIf="!userProfileMap[user.id]">
+      <div class="dp" *ngIf="!userProfileMap[user.follower]">
         <img src="../../assets/images/user.jfif" alt="">
       </div>
       <div class="username">
-        <b>{{ user.username }}</b>
+        <b>{{ usernameMap[user.id] }}</b>
       </div>
     </div>
     </div>
